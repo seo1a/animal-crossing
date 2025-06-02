@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'SDNR_Regular';
+  src: url('../src/assets/Asia신디나루M.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SDNR_Bold';
+  src: url('../src/assets/Asia신디나루B.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'maplestory_Bold';
+  src: url('../src/assets/Maplestory\ Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'maplestory_Light';
+  src: url('../src/assets/Maplestory\ Light.ttf') format('truetype');
+}
