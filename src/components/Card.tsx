@@ -17,39 +17,70 @@ export default function Card({ villager }: CardProps) {
         if(cardRef.current) {
             gsap.to(cardRef.current, {
                 rotateY: flipped ? 0 : 180,
-                duration: 0.6,
+                duration: 0.3,
                 ease: "power2.inOut",
             })
         }
     }
+
+    const handleMouseEnter = () => {
+        if (cardRef.current) {
+            gsap.to(cardRef.current, {
+                scale: 1.05,
+                y: -10,
+                boxShadow: "0px 20px 30px rgba(0,0,0,0.2)",
+                duration: 0.3,
+                ease: "power2.out",
+            });
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (cardRef.current) {
+            gsap.to(cardRef.current, {
+                scale: 1,
+                y: 0,
+                boxShadow: "0px 10px 15px rgba(0,0,0,0.1)",
+                duration: 0.3,
+                ease: "power2.out",
+            });
+        }
+    };
 
     const month = monthMap[villager.birthday_month] ?? "??";
     const personality_kr = personalityMap[villager.personality] ?? "알 수 없음";
     const species_kr = speciesMap[villager.species] ?? "알 수 없음";
     const gender_kr = genderMap[villager.gender] ?? "알 수 없음";
 
-    console.log(villager.name);
     return(
         <div onClick={handleClick}>
             <div 
-                className="villager-card w-[140px] h-[240px] 
+                className="villager-card 
+                w-[140px] h-[240px] 
                 md:w-[240px] md:h-[420px] 
                 lg:w-[280px] lg:h-[420px]
-                bg-cream rounded-3xl
+                rounded-3xl
                 mx-2 my-8 relative group 
-                border-[13px] border-borderColor cursor-pointer" 
+                cursor-pointer" 
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 ref={cardRef}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ 
+                    transformStyle: "preserve-3d", 
+                    backgroundColor: `#${villager.title_color}` 
+                }}
             >
+                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-60 z-0 border-[13px] border-borderColor rounded-3xl" />
+                
                 {/* 앞면 (backface-hidden: 카드 회전 시 뒷면이 앞에 비쳐 보이는 것 방지) */}
-                <div className="absolute w-full h-full backface-hidden bg-cream rounded-3xl flex flex-col items-center justify-center">
+                <div className="absolute w-full h-full backface-hidden rounded-3xl flex flex-col items-center justify-center z-10">                   
                     <img 
-                        className="object-contain w-[65%] h-[65%]"
+                        className="object-contain w-[60%] h-[60%] relative z-10"
                         src={villager.image_url} 
                         alt={`${villager.name} 카드`} 
                     />
                     <h2 
-                        className="font-sdnrBold text-fontColor text-2xl text-center mt-9 px-6 py-3 rounded-3xl inline-block"
+                        className="font-sdnrBold text-fontColor text-2xl text-center mt-9 px-6 py-3 rounded-3xl inline-block relative z-10"
                         style={{ backgroundColor: `#${villager.title_color}`, color: `#${villager.text_color}` }}
                     >
                         {villager.name}
@@ -60,6 +91,7 @@ export default function Card({ villager }: CardProps) {
                 <div className="absolute w-full h-full backface-hidden 
                 bg-cream rounded-3xl 
                 px-4 py-6 text-fontColor transform rotateY-180 
+                border-[13px] border-borderColor
                 flex flex-col justify-center">
                     <img
                         className="mx-auto object-contain w-[25%] h-[25%]"
