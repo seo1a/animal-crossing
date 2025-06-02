@@ -3,7 +3,6 @@ import type { villager } from "./types/villager";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card";
-import CardDetail from "./components/CardDetail";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.nookipedia.com//villagers";
@@ -66,20 +65,12 @@ export default function App () {
             {searchedVillagers?.map((v) => (
               <Card 
                 key={`${v.id}-${v.name}-${v.species}`}
-                name={v.name}
-                id={`${v.id}-${v.name}-${v.species}`}
-                image_url={v.image_url}
-                onClick = {() => setSelectedVillager(v)} 
+                villager={v}
               />
             ))}
           </div>
 
-          {selectedVillager && (
-            <CardDetail 
-              selectedVillager={selectedVillager}
-              onClose={() => setSelectedVillager(null)}
-            />
-          )}
+         
         </div>
     </div>
   );

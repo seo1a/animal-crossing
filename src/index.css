@@ -21,3 +21,16 @@
   font-family: 'maplestory_Light';
   src: url('../src/assets/Maplestory\ Light.ttf') format('truetype');
 }
+
+.perspective {
+  perspective: 1500px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotateY-180 {
+  transform: rotateY(180deg);
+}

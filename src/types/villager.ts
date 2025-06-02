@@ -1,5 +1,7 @@
 export interface villager {
     name: string;
+    title_color: string;
+    text_color: string;
     id: string;
     image_url: string;
     species: string;
