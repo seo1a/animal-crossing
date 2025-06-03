@@ -24,7 +24,10 @@ export default function App () {
 
   if(isLoading) {
     return (
-      <div className="bg-backgroundImg bg-cover bg-center min-h-screen flex justify-center items-center">
+      <div
+        className="bg-cover bg-center min-h-screen flex justify-center items-center"
+        style={{ backgroundImage: `url(${background})` }}
+      > 
       <p className="font-sdnrBold text-5xl text-fontColor">
         이웃들을 불러오고 있어요🍃
       </p>
@@ -34,7 +37,7 @@ export default function App () {
 
   if (isError) {
     return (
-      <div className="bg-backgroundImg bg-center">
+      <div className="bg-backgroundImg bg-cover bg-center min-h-screen flex justify-center items-center">
         <p className="flex justify-center items-center font-sdnrBold text-5xl text-fontColor">
           이웃들을 불러오지 못했어요😢
         </p>
