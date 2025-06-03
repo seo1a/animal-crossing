@@ -56,11 +56,10 @@ export default function Card({ villager }: CardProps) {
         <div onClick={handleClick}>
             <div 
                 className="villager-card 
-                w-[140px] h-[240px] 
-                md:w-[240px] md:h-[420px] 
-                lg:w-[280px] lg:h-[420px]
+                 w-[30vw] max-w-[280px] min-w-[120px] 
+                aspect-[2/3]
                 rounded-3xl
-                mx-2 my-8 relative group 
+                sm:mx-2 my-4 sm:my-8 relative group 
                 cursor-pointer" 
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -70,17 +69,21 @@ export default function Card({ villager }: CardProps) {
                     backgroundColor: `#${villager.title_color}` 
                 }}
             >
-                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-60 z-0 border-[13px] border-borderColor rounded-3xl" />
+                <div className="absolute top-0 left-0 w-full h-full 
+                bg-white opacity-60 z-0 
+                border-[8px] sm:border-[13px] border-borderColor rounded-3xl" />
                 
                 {/* 앞면 (backface-hidden: 카드 회전 시 뒷면이 앞에 비쳐 보이는 것 방지) */}
                 <div className="absolute w-full h-full backface-hidden rounded-3xl flex flex-col items-center justify-center z-10">                   
                     <img 
-                        className="object-contain w-[60%] h-[60%] relative z-10"
+                        className="object-contain w-[50%] sm:w-[60%] h-[50%] sm:h-[60%] relative z-10"
                         src={villager.image_url} 
                         alt={`${villager.name} 카드`} 
                     />
                     <h2 
-                        className="font-sdnrBold text-fontColor text-2xl text-center mt-9 px-6 py-3 rounded-3xl inline-block relative z-10"
+                        className="font-sdnrBold text-fontColor text-lg sm:text-2xl text-center 
+                        mt-4 sm:mt-9 px-2 sm:px-6 sm:py-3 
+                        rounded-3xl inline-block relative z-10"
                         style={{ backgroundColor: `#${villager.title_color}`, color: `#${villager.text_color}` }}
                     >
                         {villager.name}
@@ -89,22 +92,24 @@ export default function Card({ villager }: CardProps) {
                 
                 {/* 뒷면 */}
                 <div className="absolute w-full h-full backface-hidden 
-                bg-cream rounded-3xl 
-                px-4 py-6 text-fontColor transform rotateY-180 
-                border-[13px] border-borderColor
-                flex flex-col justify-center">
+                    bg-cream rounded-3xl 
+                    px-2 sm:px-4 py-2 sm:py-6 text-fontColor transform rotateY-180 
+                    border-[8px] sm:border-[13px] border-borderColor
+                    flex flex-col justify-center"
+                >
                     <img
                         className="mx-auto object-contain w-[25%] h-[25%]"
                         src={villager.image_url} 
                         alt={`${villager.name} 카드`} 
                     />
-                    <h2 className="text-center mt-6 mb-2 text-2xl font-sdnrBold">{villager.name}</h2>
-                    <div className="text-lg font-mapleBold mx-4 self-start">
-                        <p className="mb-1">종: {species_kr}</p>
-                        <p className="mb-1">성격: {personality_kr}</p>
-                        <p className="mb-1">성별: {gender_kr}</p>
-                        <p className="mb-1">생일: {month}월 {villager.birthday_day}일</p>
-                        <p className="mb-1">대사: {villager.quote}</p>
+                    <h2 className="text-center mt-2 sm:mt-6 mb-1 sm:mb-4 text-sm sm:text-2xl font-sdnrBold">{villager.name}</h2>
+                    <div className="text-[10px] sm:text-lg font-mapleBold mx-1 sm:mx-4 
+                        self-start overflow-y-auto md:pr-1">
+                        <p className="md:mb-1">종: {species_kr}</p>
+                        <p className="md:mb-1">성격: {personality_kr}</p>
+                        <p className="md:mb-1">성별: {gender_kr}</p>
+                        <p className="md:mb-1">생일: {month}월 {villager.birthday_day}일</p>
+                        <p className="md:mb-1 break-words whitespace-pre-wrap">대사: {villager.quote}</p>
                     </div>
                 </div>
             </div>

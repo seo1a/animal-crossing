@@ -1,76 +1,66 @@
-import axios from "axios";
 import type { villager } from "./types/villager";
-import { useState, useEffect } from "react";
+import { cachingVillagers } from "./hooks/getVillagers";
+import { useState, useMemo } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "https://api.nookipedia.com//villagers";
-
-async function fetchVillagers(): Promise<villager[]> {
-  const response = await axios.get(BASE_URL, {
-    headers: {
-      "X-API-KEY": API_KEY,
-      "Accept-Version": "1.7.0",
-    }
-  });
-
-  return response.data;
-}
-
 export default function App () {
-  const [villagers, setVillagers] = useState<villager[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);  // api 로딩 상태 알림
-  const [selectedVillager, setSelectedVillager] = useState<villager | null>(null);
+  const { data: villagers = [], isLoading, isError } = cachingVillagers();
   const [value, setValue] = useState<string>("");
-  const [filteredVillagers, setFilteredVillagers] = useState<villager[]>([]);
-  const [searchedVillagers, setSearchedVillagers] = useState<villager[]>([]);
+  const [selectedSpecies, setSelectedSpecies] = useState<string>("");
+  const [selectedPersonality, setSelectedPersonality] = useState<string>("");
+  const [selectedGender, setSelectedGender] = useState<string>("");
 
-  useEffect(() => {
-    fetchVillagers()
-      .then((data) => {
-        setVillagers(data);
-        setIsLoading(false);
-        setFilteredVillagers([...data]);
-        setSearchedVillagers([...data]);
-      })
-      .catch((error) => {
-        console.error("Error fetching villagers:", error);
-        setIsLoading(false);
-      })
-  }, []);
+  const searchedVillagers = useMemo<villager[]>(() => {
+    return villagers.filter((v) => {
+      const matchedName = v.name?.toLowerCase().includes(value.toLowerCase().trim());
+      const matchedSpecies = selectedSpecies === "" || v.species === selectedSpecies;
+      const matchedPersonality = selectedPersonality === "" || v.personality === selectedPersonality;
+      const matchedGender = selectedGender === "" || v.gender === selectedGender;
+      return matchedName && matchedSpecies && matchedPersonality && matchedGender;
+    })
+  }, [villagers, value, selectedSpecies, selectedPersonality, selectedGender])
 
-  useEffect(() => {
-    if (value.trim() === "") {
-      if (villagers && villagers.length > 0) {
-        setFilteredVillagers([...villagers]);
-      }
-    } else {
-      if (villagers && villagers.length > 0) {
-        const filtered = villagers.filter((villager) =>
-          villager.name?.toLowerCase().includes(value.toLowerCase().replace(" ", ""))
-        );
-        setFilteredVillagers(filtered);
-      }
-    }
-  }, [value, villagers]);
+  if(isLoading) {
+    return (
+      <p className="flex justify-center item-center font-sdnrBold text-5xl text-fontColor">
+        이웃들을 불러오고 있어요🍃
+      </p>
+    );
+  }
 
-  if(isLoading) return <p className="flex justify-center item-center font-sdnrBold text-5xl text-fontColor">이웃들을 불러오고 있어요🍃</p>;
+  if (isError) {
+    return (
+      <p className="flex justify-center items-center font-sdnrBold text-5xl text-fontColor">
+        이웃들을 불러오지 못했어요😢
+      </p>
+    );
+  }
 
+ 
   return(
     <div className="bg-backgroundImg bg-center">
-      <Header value={value} setValue={setValue} villagers={villagers} filteredVillagers={filteredVillagers} setSearchedVillagers={setSearchedVillagers} />
+      <Header 
+        value={value} 
+        setValue={setValue} 
+        selectedSpecies={selectedSpecies}
+        setSelectedSpecies={setSelectedSpecies}
+        selectedPersonality={selectedPersonality}
+        setSelectedPersonality={setSelectedPersonality}
+        selectedGender={selectedGender}
+        setSelectedGender={setSelectedGender}
+        searchedVillagers={searchedVillagers}
+      />
         <div className="flex min-h-screen justify-center w-full sm:px-12 py-5 md:py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 ">
-            {searchedVillagers?.map((v) => (
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+            {searchedVillagers?.map((villager) => (
               <Card 
-                key={`${v.id}-${v.name}-${v.species}`}
-                villager={v}
+                key={`${villager.id}-${villager.name}-${villager.species}`}
+                villager={villager}
               />
             ))}
           </div>
 
-         
         </div>
     </div>
   );

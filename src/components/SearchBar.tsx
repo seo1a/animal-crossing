@@ -4,8 +4,7 @@ import type { villager } from "../types/villager";
 interface SearchBarProps {
     value: string;
     setValue: (value: string) => void
-    filteredVillagers: villager[];
-    setSearchedVillagers: (villagers: villager[]) => void;
+    searchedVillagers: villager[];
 }
 
 interface Suggestion {
@@ -16,8 +15,7 @@ interface Suggestion {
 export default function SearchBar({ 
     value, 
     setValue, 
-    filteredVillagers, 
-    setSearchedVillagers 
+    searchedVillagers 
 }: SearchBarProps) {
 
     const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -29,23 +27,19 @@ export default function SearchBar({
             setShowDropdown(false);
         }
         else{
-            setFilteredSuggestions(filteredVillagers.map((villager, index) => 
+            setFilteredSuggestions(searchedVillagers.map((villager, index) => 
                 ({ 
                     id: villager.id || `${villager.id}-${index}`, 
                     name: villager.name 
                 })
             ));
-            setShowDropdown((filteredVillagers.length > 0));
+            setShowDropdown((searchedVillagers.length > 0));
         
         }
-    },[value, filteredVillagers]);
+    },[value, searchedVillagers]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); 
-        const matched = filteredVillagers.filter(villager =>
-            villager.name.toLowerCase().includes(value.toLowerCase())
-        );
-        setSearchedVillagers(matched.length > 0 ? matched : []);
+        e.preventDefault();
         setShowDropdown(false);
     };
 
@@ -57,13 +51,13 @@ export default function SearchBar({
                 placeholder="궁금한 이웃을 검색해 보세요!🍃"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="search-bar w-full md:w-96 h-16 text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
+                className="search-bar w-full md:w-96 h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
             />
             <button 
                 className="ml-3 p-2 cursor-pointer absolute right-0"
                 onClick={() => {
                     setShowDropdown(false);
-                    setSearchedVillagers(filteredVillagers);
+                    setValue("");
                 }}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="gray" className="size-6">
@@ -79,12 +73,6 @@ export default function SearchBar({
                             onClick={() => {
                                 setValue(suggestion.name);
                                 setShowDropdown(false);
-                                
-                                const selectedSuggestion = filteredVillagers.filter((villager) =>
-                                    villager.name.toLowerCase() === suggestion.name.toLowerCase()
-                                );
-                                
-                                setSearchedVillagers(selectedSuggestion);
                             }}
                         >
                             {suggestion.name}
