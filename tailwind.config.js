@@ -13,7 +13,7 @@ export default {
         mapleBold: ['maplestory_Bold', 'sans-serif']
       },
       backgroundImage: {
-        'backgroundImg': "url('src/assets/background.png')"
+        'backgroundImg': "url('/background.png')"
       },
       colors: {
         cream: "#fff9e3",

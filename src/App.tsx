@@ -1,6 +1,7 @@
 import type { villager } from "./types/villager";
 import { cachingVillagers } from "./hooks/getVillagers";
 import { useState, useMemo } from "react";
+import background from "./assets/background.png"
 import Header from "./components/Header";
 import Card from "./components/Card";
 
@@ -23,17 +24,21 @@ export default function App () {
 
   if(isLoading) {
     return (
-      <p className="flex justify-center item-center font-sdnrBold text-5xl text-fontColor">
+      <div className="bg-backgroundImg bg-cover bg-center min-h-screen flex justify-center items-center">
+      <p className="font-sdnrBold text-5xl text-fontColor">
         이웃들을 불러오고 있어요🍃
       </p>
+    </div>
     );
   }
 
   if (isError) {
     return (
-      <p className="flex justify-center items-center font-sdnrBold text-5xl text-fontColor">
-        이웃들을 불러오지 못했어요😢
-      </p>
+      <div className="bg-backgroundImg bg-center">
+        <p className="flex justify-center items-center font-sdnrBold text-5xl text-fontColor">
+          이웃들을 불러오지 못했어요😢
+        </p>
+      </div>
     );
   }
 
