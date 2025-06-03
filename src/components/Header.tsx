@@ -36,14 +36,21 @@ export default function Header({
     return(
         <header>
             <div className="flex flex-col items-center justify-center w-full">
-                <div className="mb-10">
-                    <img src={logoImg} alt="logo" className="w-[90%] lg:w-full h-auto lg:h-[22rem] cursor-pointer" onClick={handleLogoClick}/>
+                <div className="mb-4 md:mb-10">
+                    <img 
+                        src={logoImg} 
+                        alt="logo" 
+                        className="mx-auto w-[70%] lg:w-full h-auto lg:h-[22rem] cursor-pointer" 
+                        onClick={handleLogoClick}
+                    />
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row px-4">
                     <select 
                         value={selectedSpecies}
                         onChange={(e) => setSelectedSpecies(e.target.value)}
-                        className="w-[50%] h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor font-sdnrBold pl-4 mb-10 mx-4"
+                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
+                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
                     >
                         <option value="">종</option>
                         <option value="Alligator">악어</option>
@@ -85,7 +92,9 @@ export default function Header({
                     <select 
                         value={selectedPersonality}
                         onChange={(e) => setSelectedPersonality(e.target.value)}
-                        className="w-[50%] h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor font-sdnrBold pl-4 mb-10 mx-4"
+                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
+                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
                     >
                         <option value="">성격</option>
                         <option value="Big sister">단순활발</option>
@@ -101,7 +110,9 @@ export default function Header({
                     <select 
                         value={selectedGender}
                         onChange={(e) => setSelectedGender(e.target.value)}
-                        className="w-[50%] h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor font-sdnrBold pl-4 mb-10 mx-4"
+                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
+                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
                     >
                         <option value="">성별</option>
                         <option value="Male">수컷</option>
@@ -109,7 +120,7 @@ export default function Header({
                     </select>
                 </div>
                 
-                <div className="w-full sm:w-auto px-4 mb-12">
+                <div className="w-full sm:w-auto px-4 mb-4 md:mb-12">
                     <div className="flex-grow">
                         <SearchBar value={value} setValue={setValue} searchedVillagers={searchedVillagers}/>
                     </div>

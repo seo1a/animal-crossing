@@ -51,7 +51,7 @@ export default function SearchBar({
                 placeholder="궁금한 이웃을 검색해 보세요!🍃"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="search-bar w-full md:w-96 h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
+                className="search-bar w-full md:w-96 h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
             />
             <button 
                 className="ml-3 p-2 cursor-pointer absolute right-0"
