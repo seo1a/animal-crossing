@@ -66,18 +66,28 @@ export default function App () {
         selectedGender={selectedGender}
         setSelectedGender={setSelectedGender}
         searchedVillagers={searchedVillagers}
-      />
-        <div className="flex min-h-screen justify-center w-full px-8 sm:px-12 py-5 md:py-8">
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 justify-items-center">
+      />      
+          <div className="
+            grid 
+            grid-cols-3 
+            sm:grid-cols-5
+            sm:gap-3 
+            p-2 
+            sm:p-4 
+            md:p-6 
+            lg:p-8
+            max-w-screen-xl 
+            mx-2
+            md:mx-auto 
+            justify-items-center
+          ">
             {searchedVillagers?.map((villager) => (
               <Card 
                 key={`${villager.id}-${villager.name}-${villager.species}`}
                 villager={villager}
               />
             ))}
-          </div>
-
-        </div>
+          </div> 
     </div>
   );
 }
