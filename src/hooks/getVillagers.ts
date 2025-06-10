@@ -18,7 +18,6 @@ const getCachedVillagers = (): villager[] | null => {
 };
 
 const fetchVillagers = async (): Promise<villager[]> => {
-  // 캐시된 데이터 확인
   const cachedData = getCachedVillagers();
   if (cachedData) {
     return cachedData; // 캐시가 있으면 즉시 반환
@@ -39,8 +38,8 @@ export const useVillagers = () => {
   return useQuery<villager[], Error>({
     queryKey: ["villagers"],
     queryFn: fetchVillagers,
-    staleTime: Infinity, // 데이터가 절대 만료되지 않도록 설정
-    gcTime: Infinity, // 캐시가 GC에 의해 제거되지 않도록 설정
+    staleTime: 21600000, // 6시간 (6 * 60 * 60 * 1000 ms)
+    gcTime: 43200000, // 12시간 (12 * 60 * 60 * 1000 ms)
     initialData: getCachedVillagers() || undefined, // 초기 데이터로 캐시 사용
   });
 };
