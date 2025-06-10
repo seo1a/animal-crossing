@@ -1,12 +1,13 @@
 import type { villager } from "./types/villager";
-import { cachingVillagers } from "./hooks/getVillagers";
+import { useVillagers } from "./hooks/getVillagers";
 import { useState, useMemo } from "react";
 import background from "./assets/background.png"
+import loading from "./assets/loading3.png"
 import Header from "./components/Header";
 import Card from "./components/Card";
 
 export default function App () {
-  const { data: villagers = [], isLoading, isError } = cachingVillagers();
+  const { data: villagers = [], isLoading, isError } = useVillagers();
   const [value, setValue] = useState<string>("");
   const [selectedSpecies, setSelectedSpecies] = useState<string>("");
   const [selectedPersonality, setSelectedPersonality] = useState<string>("");
@@ -28,24 +29,31 @@ export default function App () {
         className="bg-cover bg-center min-h-screen flex justify-center items-center"
         style={{ backgroundImage: `url(${background})` }}
       > 
-      <p className="font-sdnrBold text-5xl text-fontColor">
-        이웃들을 불러오고 있어요🍃
+      <p className="font-sdnrBold text-2xl md:text-5xl text-fontColor">
+        이웃들을 불러오고 있어요
       </p>
+      <img
+        src={loading}
+        alt="로딩 중"
+        className="w-24 h-24 animate-spin"
+      />
     </div>
     );
   }
 
   if (isError) {
     return (
-      <div className="bg-backgroundImg bg-cover bg-center min-h-screen flex justify-center items-center">
-        <p className="flex justify-center items-center font-sdnrBold text-5xl text-fontColor">
+      <div
+        className="bg-cover bg-center min-h-screen flex justify-center items-center"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <p className="flex justify-center items-center font-sdnrBold text-2xl md:text-5xl text-fontColor">
           이웃들을 불러오지 못했어요😢
         </p>
       </div>
     );
   }
 
- 
   return(
     <div className="bg-backgroundImg bg-center">
       <Header 
@@ -59,8 +67,8 @@ export default function App () {
         setSelectedGender={setSelectedGender}
         searchedVillagers={searchedVillagers}
       />
-        <div className="flex min-h-screen justify-center w-full sm:px-12 py-5 md:py-8">
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+        <div className="flex min-h-screen justify-center w-full px-8 sm:px-12 py-5 md:py-8">
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 justify-items-center">
             {searchedVillagers?.map((villager) => (
               <Card 
                 key={`${villager.id}-${villager.name}-${villager.species}`}

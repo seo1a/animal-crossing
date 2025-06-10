@@ -56,17 +56,17 @@ export default function Card({ villager }: CardProps) {
         <div onClick={handleClick}>
             <div 
                 className="villager-card 
-                 w-[30vw] max-w-[280px] min-w-[120px] 
+                w-[30vw] max-w-[280px] min-w-[120px] 
                 aspect-[2/3]
                 rounded-3xl
-                sm:mx-2 my-4 sm:my-8 relative group 
+                sm:mx-2 my-3 sm:my-8 relative group 
                 cursor-pointer" 
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 ref={cardRef}
                 style={{ 
                     transformStyle: "preserve-3d", 
-                    backgroundColor: `#${villager.title_color}` 
+                    backgroundColor: villager.title_color ? `#${villager.title_color}` : "#fff9e3"
                 }}
             >
                 <div className="absolute top-0 left-0 w-full h-full 
@@ -84,7 +84,10 @@ export default function Card({ villager }: CardProps) {
                         className="font-sdnrBold text-fontColor text-lg sm:text-2xl text-center 
                         mt-4 sm:mt-9 px-2 sm:px-6 sm:py-3 
                         rounded-3xl inline-block relative z-10"
-                        style={{ backgroundColor: `#${villager.title_color}`, color: `#${villager.text_color}` }}
+                        style={{
+                            backgroundColor: villager.title_color ? `#${villager.title_color}` : "#fff9e3", // title_color 없으면 cream 사용
+                            color: villager.text_color ? `#${villager.text_color}` : "#807155", // text_color 없으면 fontColor 사용
+                        }}
                     >
                         {villager.name}
                     </h2>
