@@ -44,14 +44,14 @@ export default function SearchBar({
     };
 
     return(
-        <form onSubmit={handleSubmit} className="relative flex items-center px-4 md:px-6 lg:px-8 font-sdnrBold">
+        <form onSubmit={handleSubmit} className="relative flex items-center px-8 md:px-6 lg:px-8 font-sdnrBold">
             <input
                 id="search-bar"
                 type="search"
                 placeholder="궁금한 이웃을 검색해 보세요!🍃"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="search-bar w-full md:w-96 h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
+                className="search-bar mb-6 md:mb-0 w-full md:w-96 h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
             />
             <button 
                 className="ml-3 p-2 cursor-pointer absolute right-0"

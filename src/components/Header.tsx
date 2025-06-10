@@ -40,7 +40,7 @@ export default function Header({
                     <img 
                         src={logoImg} 
                         alt="logo" 
-                        className="mx-auto w-[70%] lg:w-full h-auto lg:h-[22rem] cursor-pointer" 
+                        className="mx-auto w-[70%] md:w-[50%] h-auto cursor-pointer" 
                         onClick={handleLogoClick}
                     />
                 </div>
@@ -48,9 +48,9 @@ export default function Header({
                     <select 
                         value={selectedSpecies}
                         onChange={(e) => setSelectedSpecies(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
-                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
+                        pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >
                         <option value="">종</option>
                         <option value="Alligator">악어</option>
@@ -92,9 +92,9 @@ export default function Header({
                     <select 
                         value={selectedPersonality}
                         onChange={(e) => setSelectedPersonality(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
-                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
+                        pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >
                         <option value="">성격</option>
                         <option value="Big sister">단순활발</option>
@@ -110,9 +110,9 @@ export default function Header({
                     <select 
                         value={selectedGender}
                         onChange={(e) => setSelectedGender(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-16 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
-                        pl-4 mb-4 md:mb-10 mx-2 md:mx-4"
+                        pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >
                         <option value="">성별</option>
                         <option value="Male">수컷</option>
@@ -120,9 +120,9 @@ export default function Header({
                     </select>
                 </div>
                 
-                <div className="w-full sm:w-auto px-4 mb-4 md:mb-12">
+                <div className="w-full sm:w-auto md:max-w-[60%] lg:max-w-[50%] xl:max-w-[40%] px-4 mb-4 md:mb-12 ">
                     <div className="flex-grow">
-                        <SearchBar value={value} setValue={setValue} searchedVillagers={searchedVillagers}/>
+                        <SearchBar value={value} setValue={setValue} searchedVillagers={searchedVillagers} />
                     </div>
                 </div>
             </div>
