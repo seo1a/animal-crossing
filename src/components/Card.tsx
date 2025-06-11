@@ -61,12 +61,13 @@ export default function Card({ villager }: CardProps) {
                 className="
                     villager-card 
                     w-full 
-                    max-w-[120px] 
+                    max-w-[105px] 
                     sm:max-w-[140px] 
                     lg:max-w-[280px] 
-                    min-w-[120px] 
+                    min-w-[105px] 
                     aspect-[2/3] 
-                    rounded-3xl 
+                    rounded-3xl
+                    mx-2
                     sm:mx-1 
                     md:mx-2
                     my-3 
