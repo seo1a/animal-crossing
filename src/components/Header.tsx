@@ -48,7 +48,7 @@ export default function Header({
                     <select 
                         value={selectedSpecies}
                         onChange={(e) => setSelectedSpecies(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-base md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
                         pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >
@@ -92,7 +92,7 @@ export default function Header({
                     <select 
                         value={selectedPersonality}
                         onChange={(e) => setSelectedPersonality(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-base md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
                         pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >
@@ -110,7 +110,7 @@ export default function Header({
                     <select 
                         value={selectedGender}
                         onChange={(e) => setSelectedGender(e.target.value)}
-                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl 
+                        className="w-[30%] md:w-[50%] h-12 md:h-14 text-base md:text-xl text-fontColor rounded-2xl 
                         bg-cream focus:outline-none placeholder-fontColor font-sdnrBold 
                         pl-4 mb-4 md:mb-6 mx-2 md:mx-4"
                     >

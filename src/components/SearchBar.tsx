@@ -51,10 +51,10 @@ export default function SearchBar({
                 placeholder="궁금한 이웃을 검색해 보세요!🍃"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="search-bar mb-6 md:mb-0 w-full md:w-96 h-12 md:h-14 text-lg md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
+                className="search-bar mb-6 md:mb-0 w-full md:w-96 h-12 md:h-14 text-base md:text-xl text-fontColor rounded-2xl bg-cream focus:outline-none placeholder-fontColor pl-4"
             />
             <button 
-                className="ml-3 p-2 cursor-pointer absolute right-0"
+                className="absolute right-8 top-[33%] md:top-1/2 transform -translate-y-1/2 p-2 cursor-pointer"
                 onClick={() => {
                     setShowDropdown(false);
                     setValue("");
