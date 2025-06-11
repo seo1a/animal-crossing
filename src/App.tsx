@@ -30,12 +30,12 @@ export default function App () {
         style={{ backgroundImage: `url(${background})` }}
       > 
       <p className="font-sdnrBold text-lg md:text-5xl text-fontColor">
-        이웃들을 불러오고 있어요
+        이웃들을 불러오고 있어요 
       </p>
       <img
         src={loading}
         alt="로딩 중"
-        className="w-24 h-24 animate-pulse"
+        className=" w-12 md:w-24 h-12 md:h-24 animate-pulse"
       />
     </div>
     );
