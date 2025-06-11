@@ -67,7 +67,7 @@ export default function Card({ villager }: CardProps) {
                     min-w-[105px] 
                     aspect-[2/3] 
                     rounded-3xl
-                    mx-2
+                    mx-1
                     sm:mx-1 
                     md:mx-2
                     my-3 

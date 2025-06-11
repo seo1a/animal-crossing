@@ -29,13 +29,13 @@ export default function App () {
         className="bg-cover bg-center min-h-screen flex justify-center items-center"
         style={{ backgroundImage: `url(${background})` }}
       > 
-      <p className="font-sdnrBold text-2xl md:text-5xl text-fontColor">
+      <p className="font-sdnrBold text-lg md:text-5xl text-fontColor">
         이웃들을 불러오고 있어요
       </p>
       <img
         src={loading}
         alt="로딩 중"
-        className="w-24 h-24 animate-spin"
+        className="w-24 h-24 animate-pulse"
       />
     </div>
     );
