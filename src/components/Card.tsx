@@ -217,7 +217,8 @@ export default function Card({ villager }: CardProps) {
                         sm:text-[10px] 
                         md:text-sm 
                         lg:text-base 
-                        font-mapleBold 
+                        font-sdnrBold
+                        md:font-mapleBold 
                         mx-1 
                         sm:mx-2 
                         md:mx-3 
