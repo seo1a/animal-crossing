@@ -35,7 +35,7 @@ export default function App () {
       <img
         src={loading}
         alt="로딩 중"
-        className=" w-12 md:w-24 h-12 md:h-24 animate-pulse"
+        className="ml-3 w-12 md:w-24 h-12 md:h-24 animate-pulse"
       />
     </div>
     );
