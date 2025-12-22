@@ -31,6 +31,7 @@ React + TypeScript 기반으로 Animal Crossing 캐릭터 정보를 시각적으
 - <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/> UI 구성 및 컴포넌트 기반 개발
 - <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/> 빠른 개발 환경 및 번들링
 - <img src="https://img.shields.io/badge/TypeScript-ES6+-F7DF1E?style=for-the-badge&logo=typescript&logoColor=blue"/> 주요 로직 구현
+- <img src="https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white"/> 서버 상태 관리 및 데이터 캐싱
 - <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"/> API 통신 처리
 - <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white"/> : 유틸리티 기반 스타일링을 통한 반응형 UI 구현
 <br>
@@ -100,11 +101,15 @@ animal-crossing
 
 - **주민 검색**: 검색창에 주민 이름을 입력하면 자동완성 검색어가 드롭다운으로 표시됩니다. 자동완성 선택/엔터로 검색이 실행됩니다.
 
+- **복합 필터링**: 검색어와 필터(종/성격/성별)를 동시에 적용하여 원하는 조건의 주민을 정확하게 찾을 수 있습니다.
+
 - **기준에 따른 주민 모아보기**: 홈 화면에서 종, 성격, 성별의 세 가지 기준을 사용해 주민들을 그룹화하여 탐색할 수 있습니다.
 
 - **이중 캐싱 시스템**: localStorage를 이용한 캐싱과 React Query의 메모리 캐싱을 함께 적용했습니다. localStorage에 캐시된 데이터가 존재할 경우 API 호출 없이 즉시 데이터를 반환하여 불필요한 네트워크 요청과 비용을 줄이고, 초기 렌더링 속도를 최적화했습니다.
 
-- **카드 호버 애니메이션**: 카드에 마우스 오버 시 확대 및 그림자 효과를 구현했습니다.
+- **동적 카드 색상**: 각 주민의 고유 색상(title_color, text_color)이 카드 배경 및 텍스트 색상에 반영되어 주민의 특징을 표현합니다.
+
+- **카드 호버 애니메이션**: 카드에 마우스를 올리면 확대 및 그림자 효과가 적용되어 시각적 피드백을 제공합니다.
 
 - **카드 플립 애니메이션**: GSAP을 사용해 카드 클릭 시 Y축 회전(Flip) 애니메이션을 적용하여 카드 앞면에서 뒷면으로 자연스럽게 전환되는 인터랙션을 구현했습니다.
 
