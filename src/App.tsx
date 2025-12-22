@@ -47,7 +47,7 @@ export default function App () {
         className="bg-cover bg-center min-h-screen flex justify-center items-center"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <p className="flex justify-center items-center font-sdnrBold text-2xl md:text-5xl text-fontColor">
+        <p className="font-sdnrBold text-lg md:text-5xl text-fontColor">
           이웃들을 불러오지 못했어요😢
         </p>
       </div>
