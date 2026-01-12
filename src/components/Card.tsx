@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import type { villager } from "../types/villager";
 import { monthMap, personalityMap, speciesMap, genderMap } from "../utils/villagerMappings";
 import gsap from "gsap";
+import { trackVillagerSelect } from "../hooks/ga";
 
 type CardProps = {
     villager: villager
@@ -12,6 +13,8 @@ export default function Card({ villager }: CardProps) {
     const [flipped, setFlipped] = useState<boolean>(false);
 
     const handleClick = () => {
+        trackVillagerSelect(villager);
+
         setFlipped(!flipped);
 
         if(cardRef.current) {

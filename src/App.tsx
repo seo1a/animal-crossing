@@ -1,10 +1,11 @@
 import type { villager } from "./types/villager";
 import { useVillagers } from "./hooks/getVillagers";
-import { useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import background from "./assets/background.png"
 import loading from "./assets/loading3.png"
 import Header from "./components/Header";
 import Card from "./components/Card";
+import { initGA, trackPageView } from "./hooks/ga";
 
 export default function App () {
   const { data: villagers = [], isLoading, isError } = useVillagers();
@@ -12,6 +13,11 @@ export default function App () {
   const [selectedSpecies, setSelectedSpecies] = useState<string>("");
   const [selectedPersonality, setSelectedPersonality] = useState<string>("");
   const [selectedGender, setSelectedGender] = useState<string>("");
+
+  useEffect(() => {
+    initGA();
+    trackPageView();
+  }, []);
 
   const searchedVillagers = useMemo<villager[]>(() => {
     return villagers.filter((v) => {

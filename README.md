@@ -179,4 +179,12 @@ Nookipedia API는 주민 이름을 영문으로만 제공하고 있으며, 한�
 ## 📌참고 <br>
 
 Nookipedia API 문서: https://api.nookipedia.com
- 
+<br> 
+<br> 
+<br> 
+
+
+# 추후 추가할 것
+SPA 환경에서는 URL 변경이 없기 때문에
+GA4의 page_view를 상태 기반으로 직접 전송하여
+가상 페이지 단위로 사용자 흐름을 추적했습니다.
